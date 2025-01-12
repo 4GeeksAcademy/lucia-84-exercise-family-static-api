@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 import os
-from flask import Flask, request, jsonify, url_for
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from utils import APIException, generate_sitemap
 from datastructures import FamilyStructure
@@ -46,7 +46,7 @@ def add_member():
     if "lucky_numbers" not in body:
         return jsonify({'msg': 'El campo lucky_numbers es obligatorio'}), 400
     new_member = {
-        'id': body['id'] if 'id' in body else jackson_family._generate_id(),
+        'id': body['id'] if 'id' in body else jackson_family._generateId(),
         'first_name': body['first_name'],
         'last_name': jackson_family.last_name,
         'age': body['age'],
